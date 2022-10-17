@@ -13,7 +13,7 @@ class ImportData
   end
 
   def build!
-    @document.update(status: 1)
+    @document.update(status: 'processing')
     Zip::File.open(Rails.root + "public/#{@document.name}") do |zip_file|
       zip_file.entries.each do |entry|
         @invoices << Hash.from_xml(zip_file.read(entry.name))
@@ -22,7 +22,7 @@ class ImportData
       end
     end
     set_invoices
-    @document.update(successful: @correct, failed: @incorrect, status: 2)
+    @document.update(successful: @correct, failed: @incorrect, status: 'completed')
   end
 
   def set_invoices

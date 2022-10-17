@@ -11,7 +11,7 @@ class Api::V1::DocumentsController < ApplicationController
   def create
     file = params[:file].read
     filename = params[:file].original_filename
-    File.open(File.join(Rails.root, 'public/invoices', filename), 'wb') { |f| f.write file }
+    File.open(File.join(Rails.root, 'public/uploads', filename), 'wb') { |f| f.write file }
     @document = Document.new(name: filename)
     if @document.save
       ImportData.delay.build(@document)

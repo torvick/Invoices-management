@@ -39,5 +39,3 @@ vendor/bundle
 .ruby-gemset
 
 *.dump
-
-public/invoices
