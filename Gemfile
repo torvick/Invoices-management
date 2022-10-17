@@ -54,3 +54,11 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+# Rubyzip is a ruby library for reading and writing zip files.
+gem 'rubyzip'
+
+gem 'delayed_job_active_record'
+gem 'daemons'
+
+gem "rqrcode", "~> 2.0"
