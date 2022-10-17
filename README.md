@@ -40,4 +40,4 @@ $ rake jobs:work
 
 ## Bonus:
 ### you can test the application in this url
-- base url: 
+- base url: http://35.93.54.44:3000
