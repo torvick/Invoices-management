@@ -14,4 +14,5 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   def register_failed
     render json: { message: "Signed up failure." }
   end
+
 end
