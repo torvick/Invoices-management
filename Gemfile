@@ -63,4 +63,6 @@ gem 'daemons'
 
 gem "rqrcode", "~> 2.0"
 
-gem 'net-smtp', require: false
+gem  'net-smtp', require: false
+gem  'net-imap', require: false
+gem  'net-pop', require: false
