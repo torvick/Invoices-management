@@ -14,7 +14,7 @@ class ImportData
 
   def build!
     @document.update(status: 'processing')
-    Zip::File.open(Rails.root + "public/#{@document.name}") do |zip_file|
+    Zip::File.open(Rails.root + "public/invoices/#{@document.name}") do |zip_file|
       zip_file.entries.each do |entry|
         @invoices << Hash.from_xml(zip_file.read(entry.name))
       rescue Exception => e
