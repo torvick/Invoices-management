@@ -12,9 +12,9 @@ class Api::V1::DocumentsController < ApplicationController
     file = params[:file].read
     filename = params[:file].original_filename
     File.open(File.join(Rails.root, 'public/invoices', filename), 'wb') { |f| f.write file }
-    @document = Document.new(name: filename)
+    @document = Document.new(name: filename, status: 'pending')
     if @document.save
-      ImportData.delay.build(@document)
+      ImportData.build(@document)
       render json: @document, status: :created
     else
       render json: @document.errors, status: :unprocessable_entity

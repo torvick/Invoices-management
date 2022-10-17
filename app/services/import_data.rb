@@ -51,12 +51,14 @@ class ImportData
 
   def set_emitter(args)
     emitter = Emitter.find_by(rfc: args['rfc'])
-    Emitter.create!(name: args['name'], rfc: args['rfc']) if emitter.nil?
+    emitter = Emitter.create!(name: args['name'], rfc: args['rfc']) if emitter.nil?
+    return emitter
   end
 
   def set_receiver(args)
     receiver = User.find_by(rfc: args['rfc'])
-    User.create!(name: args['name'], rfc: args['rfc'], email: "#{args['name'].gsub(' ','').downcase}@mail.com") if receiver.nil?
+    receiver = User.create!(name: args['name'], rfc: args['rfc'], email: "#{args['name'].gsub(' ','').downcase}@mail.com") if receiver.nil?
+    return receiver
   end
 
 end
