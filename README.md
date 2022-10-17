@@ -1,55 +1,43 @@
-# Part II
+# Invoices management (API)
 
-This is the Rails starter code for take-home assessment.
-
-## Take-home assessment: Invoices management
-
-### * Project setup
+##  Project setup
 - Ruby version: 3.1.0
 - PostgreSQL (at least version 9.3 installed)
 - Configuration: You can use any container manager such as Docker, or setup directly in your local.
 
-### * User stories
-- As an authenticated User, I want to create invoices so that I can add custom invoices.
+## Running
+### 1. Download the dependencies
+```bash
+$ bundle install --path=vendor
+```
 
-- As an authenticated User, I want to edit invoices so that I can correct any invoice data.
+### 2. Run pending migrations
+```bash
+$ bundle exec rails db:migrate
+```
 
-- As an authenticated User, I want to remove invoices so that I can discard unnecessary invoices.
+### 3. Populate the database with the seeds.rb file
+```bash
+$ bundle exec rails db:seed
+```
 
-- As an authenticated User, I want to see the list of all the created/uploaded invoices so that I can found invoices easily.
-  + Acceptance criteria:
-    - The user should be able to filter invoices by status, emitter, receiver and amount range
+### 3. Start the app
+```bash
+$ bundle exec rails server
+```
 
-- As an authenticated User, I want to see a list of all the invoices I have received from a provider(emitter)
-  + Acceptance criteria:
-    - The user should be able to filter invoices by issue date (emitted_at)
-    - The user should be able to see the total amount of the filtered list
+### 4. When using the document import service you should use
+```bash
+$ rake jobs:work
+```
+#### run the tasks in the background
 
-- As an authenticated User, I want to import a set of XML that contain invoices so that I can see the invoice data in the database.
-  + Acceptance criteria:
-    - The user should be able to upload hundreds of files at a time (extract the ZIP file `public/20220811012132-invoices.zip` to see the XML format and test with that batch of XML files. Feel free to update the XML data)
-    - If you need to create more XML files, after extracting the zip run this task `rake xml:generate_invoice` to generate more XML files within that same extracted directory `public/20220811012132-invoices/`
-    - Hint: take a look at active_support’s `Hash.from_xml`
+## Postman
 
-- As an authenticated User, I want to have an endpoint that renderizes the image of invoice `cfdi_digital_stamp` as QR so that I can read it faster
+## The services can be found in the following button
 
-### * Observations
-- A user is a invoice receiver and is able to upload invoices
-- This Rails app was created for only API.
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/be0f4697c6fa98750d59?action=collection%2Fimport#?env%5BInvoices%5D=W3sia2V5IjoiZGV2IiwidmFsdWUiOiJsb2NhbGhvc3Q6MzAwMCIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoibG9jYWxob3N0OjMwMDAiLCJzZXNzaW9uSW5kZXgiOjB9LHsia2V5IjoidG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJhbnkiLCJzZXNzaW9uVmFsdWUiOiJCZWFyZXIuLi4iLCJzZXNzaW9uSW5kZXgiOjF9XQ==)
 
-### * Objectives
-- A reasonable architecture. No need to tune performance, but use best practices of...
-  - software design: design principles (SOLID) and design patterns
-  - performance: like paging, avoiding n+1 queries, background processing, etc. where you think it makes sense.
-- Testing, it is very important for us to see that you understand how to test Ruby on Rails code.
-- Well-organized code and following conventions (`rubocop`)
-- The code doesn't need to be perfect, but aim for good readability.
-
-### * Delivery instructions
-- Let us know when you have started. Publish your code on `Github` and share it with the initial commit
-- Write us any question, or doubt by e-mail message.
-- Delivery:
-  - If you implemented API only, use Postman, or any other similar
-  - Optional: use a client app or use Rails to render server/client side
-  - Bonus: put it online. You can use Heroku, or any other similar
-- When you have completed, let us know by e-mail.
+## Bonus:
+### you can test the application in this url
+- base url: 

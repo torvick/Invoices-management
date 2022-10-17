@@ -62,3 +62,5 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 
 gem "rqrcode", "~> 2.0"
+
+gem 'net-smtp', require: false

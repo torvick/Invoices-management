@@ -8,11 +8,11 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   end
 
   def register_success
-    render json: { message: 'Signed up.' }
+    render json: { message: 'Signed up.' }, status: :created
   end
 
   def register_failed
-    render json: { message: "Signed up failure." }
+    render json: { message: "Signed up failure." }, status: :unprocessable_entity
   end
 
 end
