@@ -66,3 +66,5 @@ gem "rqrcode", "~> 2.0"
 gem  'net-smtp', require: false
 gem  'net-imap', require: false
 gem  'net-pop', require: false
+
+gem 'dotenv-rails', :github => "bkeepers/dotenv", :require => 'dotenv/rails-now'

@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/bkeepers/dotenv.git
+  revision: 45b712a5c17d707959df69595b1dd12e0a18cfd1
+  specs:
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -284,6 +293,7 @@ DEPENDENCIES
   delayed_job_active_record
   devise
   devise-jwt
+  dotenv-rails!
   factory_bot_rails
   ffaker
   listen (~> 3.3)
