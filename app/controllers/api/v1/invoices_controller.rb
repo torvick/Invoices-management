@@ -5,14 +5,13 @@ class Api::V1::InvoicesController < Api::V1::BaseController
   before_action :set_invoice, only: %i[ show update destroy qr]
 
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.joins(:emitter,:user).select( 'invoices.id, invoices.invoice_uuid, invoices.status, emitters.name as emitter_name, emitters.rfc as emitter_rfc, users.name as reciver_name, users.rfc as reciver_rfc, invoices.amount as cent, invoices.currency, invoices.emitted_at, invoices.expires_at, invoices.signed_at, invoices.cfdi_digital_stamp')
     @invoices = @invoices.filter_by_status(params[:status]) if params[:status].present?
     @invoices = @invoices.filter_by_emitter(params[:emitter] ||= params[:emitter_id]) if (params[:emitter] ||= params[:emitter_id]).present?
     @invoices = @invoices.filter_by_receiver(params[:receiver]) if params[:receiver].present?
     @invoices = @invoices.filter_by_amount_range(params[:amount_lower], params[:amount_greater]) if params[:amount_lower].present? or params[:amount_greater].present?
     @invoices = @invoices.filter_by_emitted_at(params[:emitted_at]) if params[:emitted_at].present?
-    # render json: {invoices: @invoices, total_invoices: @invoices.count, total_amount: @invoices.sum(:amount)}, status: :ok
-    response_method_controller( {invoices: @invoices, total_invoices: @invoices.count, total_amount: @invoices.sum(:amount)},true)
+    response_method_controller( {invoices: @invoices, total_invoices: @invoices.size, total_amount: @invoices.sum(:amount)},true)
     response = ResponsesEngine.build!(params)
     return render json: response, status: :ok
   end
