@@ -303,6 +303,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 3.11)
   rails (~> 6.1.6, >= 6.1.6.1)
+  rexml
   rqrcode (~> 2.0)
   rspec-rails
   rubocop-performance
