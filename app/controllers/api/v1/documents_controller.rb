@@ -7,7 +7,7 @@ class Api::V1::DocumentsController < Api::V1::BaseController
   def index
     @documents = Document.all
     # render json: @documents, status: :ok
-    response_method_controller( @documents.errors,true)
+    response_method_controller( @documents,true)
     response = ResponsesEngine.build!(params)
     return render json: response, status: :ok
   end
