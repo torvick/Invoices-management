@@ -3,5 +3,5 @@ class Emitter < ApplicationRecord
   validates :name, presence: true
   validates :rfc, presence: true , uniqueness: true
 
-  enum status: { inactive: 0, active: 1 }
+  enum status: { inactive: false, active: true }
 end

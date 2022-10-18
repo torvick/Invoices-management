@@ -1,26 +1,9 @@
-class Api::V1::RegistrationsController < Devise::RegistrationsController
-  before_action :logs
-  respond_to :json
+class Api::V1::BaseController < ApplicationController
 
   private
 
-  def respond_with(resource, _opts = {})
-    resource.persisted? ? register_success : register_failed
-  end
-
-  def register_success
-    response_method_controller({user: resource, message: 'Signed up.'},true)
-    response = ResponsesEngine.build!(params)
-    render json: response, status: :created
-  end
-
-  def register_failed
-    response_method_controller(resource.errors,false)
-    response = ResponsesEngine.build!(params)
-    render json: response, status: response[:code]
-  end
-
   def logs
+    params[:current_user]   = "Hi: #{current_user.name}"
     params[:method]         = request.env['REQUEST_METHOD']
     params[:url_path]       = request.url
     params[:request_id]     = request.request_id
