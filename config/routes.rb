@@ -15,9 +15,7 @@ Rails.application.routes.draw do
       resources :emitters do
         resources :invoices, only: [:index, :show]
       end
-      # resources :receiver do
-      #   resources :invoices, only: [:index, :show]
-      # end
+      resources :receivers, except: [:create]
     end
   end
 end
